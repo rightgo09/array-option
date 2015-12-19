@@ -24,4 +24,25 @@ class ArrayOptionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('fuga', $arr->hoge->getOrElse('nothing'));
         $this->assertEquals('nothing', $arr->foo->getOrElse('nothing'));
     }
+
+    public function testIsEmpty()
+    {
+        $arr = new ArrayOption(['hoge' => 'fuga']);
+        $this->assertTrue($arr->foo->isEmpty());
+        $this->assertFalse($arr->hoge->isEmpty());
+    }
+
+    public function testIsDefined()
+    {
+        $arr = new ArrayOption(['hoge' => 'fuga']);
+        $this->assertFalse($arr->foo->isDefined());
+        $this->assertTrue($arr->hoge->isDefined());
+    }
+
+    public function testOrNull()
+    {
+        $arr = new ArrayOption(['hoge' => 'fuga']);
+        $this->assertNull($arr->foo->orNull());
+        $this->assertEquals('fuga', $arr->hoge->orNull());
+    }
 }

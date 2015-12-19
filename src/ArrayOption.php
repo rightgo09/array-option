@@ -35,4 +35,19 @@ class ArrayOption
         }
         return $this->v;
     }
+
+    public function isEmpty()
+    {
+        return is_null($this->v);
+    }
+
+    public function isDefined()
+    {
+        return ! is_null($this->v);
+    }
+
+    public function orNull()
+    {
+        return $this->v;
+    }
 }
